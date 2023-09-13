@@ -1,0 +1,54 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Add more styles as needed */
+.step-indicator {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 50%;  /* Makes it a circle */
+    background-color: rgb(91, 40, 131);  /* Same as navbar */
+    color: white;  /* Text color */
+    text-align: center;  /* Center the number */
+    font-weight: bold;  /* Make the number bold */
+    margin-right: 8px;  /* Space between the circle and the label */
+}
+
+
+/* Card styles */
+.custom-card {
+    max-width: 100%;
+    max-height: 400px;
+ 
+}
+
+/* Summary styles */
+.custom-card .card-text {
+    overflow: auto;
+    max-height: 100px;
+    margin-bottom: auto; /* This pushes the text up, ensuring it doesn't overlap the "Read More" link */
+}
+
+.custom-card .card-text {
+font-size: 12px;
+}
+
+.custom-card .card-title {
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    }
+
+/* Read More link styles */
+.custom-card .read-more-link {
+    margin-top: 2rem;
+    text-align: center;
+}
