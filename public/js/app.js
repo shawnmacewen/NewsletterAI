@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Your JavaScript code here
 
-    const CONTEXT_DEFAULT_TEXT = "You are assisting with a newsletter for financial advisors. The introduction should cater to clients and prospects without mentioning non-existent events or being overly technical. The tone should be ";
-    const CONTEXT_MESSAGE_TEXT = "Provide a compelling subject line followed by an introduction. The introduction should be concise, around 700 characters or roughly two paragraphs. Exclude greetings and signatures. Do not invent events or details.";
+    const CONTEXT_DEFAULT_TEXT = "You are a financial advisor who wants to provide a current and well written newsletter introduction message each week. You know that a well written newsletter intro message is maximum 1 to 2 paragraphs long, will have a general theme of finanacial wellness. Keep it simple and straight forward. Briefly mention having the need for a good financial plan and invite the client to book a meeting.";
+    const CONTEXT_MESSAGE_TEXT = "Write a newsletter introduction message. Provide  subject line followed by a message. The introduction should be concise, around 700 characters or roughly two paragraphs. Exclude greetings and signatures. Do not invent events or details.";
 
 
     document.getElementById('contextInput').value = CONTEXT_DEFAULT_TEXT;
