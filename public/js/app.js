@@ -135,7 +135,7 @@ function displayContent(data) {
         contentHtml += `
             <div class="col-md-6 mb-4">
                 <div class="card custom-card">
-                    <img src="${article.image_url}" class="card-img-top" alt="${article.headline}">
+                    <div class="card-img-container" style="background-image: url('${article.image_url}');"></div>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${article.headline}</h5>
                         <p class="card-text">${article.summary}</p>
