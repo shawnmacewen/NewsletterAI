@@ -54,7 +54,7 @@ const PORT = 3000;
 //start the server and listen on port 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on http://0.0.0.0:${PORT}`);
-    console.log('Filecheck: 6')
+    console.log('Filecheck: 7')
 });
 
 

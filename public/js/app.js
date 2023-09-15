@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show the spinner before sending the request
     document.getElementById('loadingSpinner').classList.remove('d-none');
 
-    const SERVER_URL = "http://eastcoastbeard.com";  // Update this to your actual server address
-    const SERVER_PORT = 8080; // port
-    const FILECHECK = 6;
+    const SERVER_URL = "https://newsletterai.onrender.com";  // Update this to your actual server address
+    const SERVER_PORT = 3000; // port
+    const FILECHECK = 7;
 
         try {
             // Send a POST request to the server
