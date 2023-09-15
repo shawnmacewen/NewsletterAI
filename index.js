@@ -49,7 +49,7 @@ app.use((err, req, res, next) => {
 
 
 // decalre port variable
-const PORT = 8080;
+const PORT = 3000;
 
 //start the server and listen on port 
 app.listen(PORT, '0.0.0.0', () => {
