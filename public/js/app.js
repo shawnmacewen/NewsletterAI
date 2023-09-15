@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Send a POST request to the server
             console.log(`filecheck: ${FILECHECK}`)
             console.log("Attempting to conntent to APP GPT API - SM8")
-            console.log(`Server is currently set as ${SERVER_URL}:${SERVER_PORT}`)
+            console.log(`Server is currently set as ${SERVER_URL}`)
 
-            const response = await fetch(`${SERVER_URL}:${SERVER_PORT}/chatGPT`, {
+            const response = await fetch(`${SERVER_URL}/chatGPT`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -49,12 +49,12 @@ app.use((err, req, res, next) => {
 
 
 // decalre port variable
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //start the server and listen on port 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on http://0.0.0.0:${PORT}`);
-    console.log('Filecheck: 7')
+    console.log('Filecheck: 8')
 });
 
 
