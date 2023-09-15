@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Your JavaScript code here
 
+    const CONTEXT_DEFAULT_TEXT = "You are assisting with a newsletter for financial advisors. The introduction should cater to clients and prospects without mentioning non-existent events or being overly technical. The tone should be ";
+    const CONTEXT_MESSAGE_TEXT = "Provide a compelling subject line followed by an introduction. The introduction should be concise, around 700 characters or roughly two paragraphs. Exclude greetings and signatures. Do not invent events or details.";
+
+
+    document.getElementById('contextInput').value = CONTEXT_DEFAULT_TEXT;
+    document.getElementById('messageInput').value = CONTEXT_MESSAGE_TEXT;
+
+
+
     document.getElementById('generateBtn').addEventListener('click', generateIntroduction);
 
     async function generateIntroduction() {
@@ -17,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const eventPhrase = eventValue.trim() !== "" ? `The event ${eventValue} is also relevant.` : "";
 
         // Get values from the input boxes
-        const context = document.getElementById('contextInput').value;
-        let message = document.getElementById('messageInput').value + ' using a ' + document.getElementById('toneSelect').value + ' tone.' + keywordPhrase + eventPhrase;
+        const context = document.getElementById('contextInput').value + document.getElementById('toneSelect').value;
+        let message = document.getElementById('messageInput').value + keywordPhrase + eventPhrase;
 
 
         // Check if the "Include Content Reference" checkbox is checked
@@ -45,16 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('loadingSpinner').classList.remove('d-none');
 
     const SERVER_URL = "https://newsletterai.onrender.com";  // Update this to your actual server address
+    const SERVER_LOCAL = 'http://127.0.0.1';
     const SERVER_PORT = 3000; // port
-    const FILECHECK = 7;
+    const FILECHECK = 6;
 
         try {
             // Send a POST request to the server
             console.log(`filecheck: ${FILECHECK}`)
             console.log("Attempting to conntent to APP GPT API - SM8")
-            console.log(`Server is currently set as ${SERVER_URL}`)
+            console.log(`Server is currently set as ${SERVER_URL}:${SERVER_PORT}`)
 
-            const response = await fetch(`${SERVER_URL}/chatGPT`, {
+            const response = await fetch(`${SERVER_URL}:${SERVER_PORT}/chatGPT`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
