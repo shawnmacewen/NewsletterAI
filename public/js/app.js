@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Constants
-    const CONTEXT_DEFAULT_TEXT = "You are a financial advisor who wants to provide a current and well written newsletter introduction message each week. You know that a well written newsletter intro message is maximum 1 to 2 paragraphs long, will have a general theme of finanacial wellness. Keep it simple and straight forward. Briefly mention having the need for a good financial plan and invite the client to book a meeting.";
+    const CONTEXT_DEFAULT_TEXT = "You are a financial advisor who wants to provide a current and well written newsletter introduction message each week. You know that a well written newsletter intro message is maximum 1 to 2 paragraphs long, will have a general theme of financial wellness. Keep it simple and straight forward. Briefly mention having the need for a good financial plan and invite the client to book a meeting.";
     const CONTEXT_MESSAGE_TEXT = "Write a newsletter introduction message. Provide a subject line followed by a message. The introduction should be concise, around 700 characters or roughly two paragraphs. Exclude greetings and signatures. Do not invent events or details.";
 
     // Variables
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add data attributes for Bootstrap tooltip
                 label.setAttribute('data-bs-toggle', 'tooltip');
                 label.setAttribute('data-bs-placement', 'top');
-                label.setAttribute('title', 'This article is recommended based on your keyword input.');
+                label.setAttribute('title', 'This article is recommended based on your keywords.');
 
                 recommendationContainer.appendChild(label); // Append the label to the recommendation container
 
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 label.setAttribute('data-bs-toggle', 'tooltip');
                 label.setAttribute('data-bs-placement', 'top');
-                label.setAttribute('title', 'This recommendation uses the AdvisorStream "Client Consumption Model" of each individual contact, rolled up, to suggest content similiar to what your contacts are reading most.');
+                label.setAttribute('title', 'This recommendation uses the AdvisorStream "Client Consumption Model"  to suggest content similiar to what your contacts are reading most.');
 
                 recommendationContainer.appendChild(label);
                 new bootstrap.Tooltip(label);
@@ -476,8 +476,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="d-flex justify-content-between align-items-center card-footer tile-card-footer">
                 <div class="d-flex">
                 <a href="${item.page_url}" target="_blank"><ion-icon name="reader-outline" style="font-size: 26px;"></ion-icon></a>
-                <span class="keyword-recommendation-container ml-2"></span>
                 <span class="client-consumption-recommendation-container"></span>
+                <span class="keyword-recommendation-container ml-2"></span>
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -530,8 +530,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- Second row for the checkbox -->
             <div class="col-12 d-flex align-items-center">
-            <span class="keyword-recommendation-container ml-2"></span>
             <span class="client-consumption-recommendation-container"></span>
+            <span class="keyword-recommendation-container ml-2"></span>
+
 
             </div>
         </div>
