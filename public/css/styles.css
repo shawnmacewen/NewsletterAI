@@ -5,68 +5,357 @@ body, h1, h2, h3, p {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
 }
 
-/* Add more styles as needed */
+.background-image-graphic {
+    background: url("/public/images/bg-12.png") center center fixed no-repeat;
+    background-size: cover;
+    width: auto;
+}
+
+.logo-circle {
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 8px;
+}
+
+ion-icon {
+    font-size: 24px;
+}
+
 .step-indicator {
     display: inline-block;
     width: 24px;
     height: 24px;
     line-height: 24px;
-    border-radius: 50%;  /* Makes it a circle */
-    background-color: rgb(91, 40, 131);  /* Same as navbar */
-    color: white;  /* Text color */
-    text-align: center;  /* Center the number */
-    font-weight: bold;  /* Make the number bold */
-    margin-right: 8px;  /* Space between the circle and the label */
+    border-radius: 50%;
+    background-color: rgb(91, 40, 131);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.bg-light-grey {
+    background-color: #e9e9e934;
 }
 
 
-/* Card styles */
+
+
+
+.input-headers {
+    font-weight: 500;
+}
+
+.input-help-text {
+    font-size: 12px;
+    padding-left: 12px;
+    color: brown;
+}
+
 .custom-card {
     max-width: 100%;
-    max-height: 300px;
-    min-height: 300px;
+    height: 300px;
     overflow: hidden;
- 
 }
 
-/* Summary styles */
 .custom-card .card-text {
-    overflow: auto;
     max-height: 100px;
-    margin-bottom: auto; /* This pushes the text up, ensuring it doesn't overlap the "Read More" link */
-}
-
-.custom-card .card-text {
-font-size: 12px;
+    margin-bottom: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    font-size: 12px;
 }
 
 .custom-card .card-title {
     font-size: 12px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    }
-
-/* Read More link styles */
-.custom-card .read-more-link {
-    margin-top: 2px;
-    text-align: center;
-    font-size: 12px;
 }
 
-
-/* Style for the image container */
 .card-img-container {
     width: 100%;
-    height: 100px; /* Adjust based on your preference */
+    height: 100px;
+    background: center no-repeat;
     background-size: cover;
-    background-position: center;
 }
 
-/* If you want to maintain aspect ratio for images, you can use this */
-.card-img-container {
-    background-size: auto;
-    background-repeat: no-repeat;
+.card-left {
+    height: 700px;
+}
+
+.card-right {
+    min-height: 650px;
+    font-family: 'Montserrati', sans-serif;
+}
+
+.card-checked {
+    box-shadow:
+        inset 0 0 0 2px #98c498,
+        inset 0 0 0 2px #bde0bd,
+        inset 0 0 0 3px #e8ffe8,
+        inset 0 0 0 4px #f0fff0,
+        inset 0 0 0 5px #f8fffa;
+    background-color: #f8fffa;
+    z-index: 1; /* Increase the stacking order */
+}
+
+
+
+
+.card-selected {
+    border-radius: 10px;
+}
+
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+#newsletterText {
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: hidden;
+}
+
+.fab-button, .generate-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.content-item {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    height: auto;
+    position: relative;
+}
+
+.content-item-img {
+    width: 100px;
+    height: 100px;
+    background: center no-repeat;
+    background-size: cover;
+}
+
+.content-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-item h5, .content-item p {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.content-item h5 {
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bolder;
+}
+
+.content-item a, .content-input-checkbox {
+    position: relative;
+    top: 60%;
+    transform: translateY(-50%);
+}
+
+.content-item-text-cutoff {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.list-view-publisher {
+    font-size: 12px;
+    color: #007BFF;
+}
+
+.content-list {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.view-btn {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border: 0px solid #007BFF;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    color: #007BFF;
+}
+
+.view-btn ion-icon {
+    font-size: 24px;
+}
+
+.view-btn.active {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.view-menu, .view-menu-sub {
+    display: flex;
+    color: darkslateblue;
+    align-items: center;
+}
+
+#style-7::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#style-7::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-7::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122,153,217)), color-stop(0.72, rgb(73,125,189)), color-stop(0.86, rgb(28,58,148)));
+}
+
+.include-checkbox-label {
+    font-size: 14px;
+}
+
+.tile-card-footer {
+    border-top: 1px solid #e4e4e4;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    max-height: 50px;
+    justify-content: space-between;
+}
+
+.form-check-input:checked {
+    background-color: green;
+    border-color: green;
+}
+
+.form-check-input:checked:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 128, 0, 0.5);
+}
+
+.form-check-input:checked:active {
+    background-color: #45a045;
+    border-color: #45a045;
+}
+
+.form-check {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center the checkbox and label */
+    justify-content: flex-start; /* Align the checkbox and label to the left */
+}
+
+.form-check-input {
+    width: 25px; /* Set a fixed width for the checkbox */
+    height: 25px; /* Set a fixed height for the checkbox */
+    margin-left: 5px;
+    margin-right: 5px; /* Add some space to the right of the checkbox */
+    flex: none; /* Prevent the checkbox from growing or shrinking */
+    margin-top: -5px;
+}
+
+.include-checkbox-label {
+    margin: 0; /* Reset any margins */
+}
+
+.form-check-input, .form-check-label {
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+/* overides for bootstrap columns */
+.col-recs .row {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.col-recs .keyword-recommendation {
+    height: auto; /* 1/3 of the container */
+    display: flex;
+    align-items: center; /* vertically center the content */
+    justify-content: center; /* horizontally center the content */
+
+}
+
+.col-recs .col-12:last-child {
+    height: 33.33%; /* 1/3 of the container */
+}
+
+
+.keyword-recommendation {
+    font-size: 12px;
+    color: #ebe722;
+    display: none; /* Keep this line */
+}
+
+/* Second row for the checkbox */
+.col-recs .col-12.d-flex.align-items-center.justify-content-center {
+    justify-content: flex-start; /* Aligns the content to the left */
 }
