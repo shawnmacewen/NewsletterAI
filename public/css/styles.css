@@ -48,7 +48,6 @@ ion-icon {
 
 
 
-
 .input-headers {
     font-weight: 500;
 }
@@ -58,6 +57,18 @@ ion-icon {
     padding-left: 12px;
     color: brown;
 }
+
+.optional-label {
+    justify-content: space-between;
+    align-items: center; /* To vertically align the items in the flex container */
+    width: 100%; /* To ensure the flex container takes up the full width */
+}
+
+
+.mood-dropdown, .tone-dropdown {
+    width: 260px;
+}
+
 
 .custom-card {
     max-width: 100%;
@@ -351,11 +362,48 @@ input:checked + .slider:before {
 
 .keyword-recommendation {
     font-size: 12px;
-    color: #ebe722;
+    color: #ee5622;
+    ;
     display: none; /* Keep this line */
 }
 
 /* Second row for the checkbox */
 .col-recs .col-12.d-flex.align-items-center.justify-content-center {
     justify-content: flex-start; /* Aligns the content to the left */
+}
+
+
+.btn-generate {
+font-size: 18px;
+height: 60px;
+width: 160px;
+
+}
+
+.client-consumption-recommendation {
+    color: #502274;  /* Change this to the color you want */
+}
+
+.config-prompt-section {
+
+
+}
+
+.config-prompt-section label {
+    font-size: 14px;
+
+}
+
+.config-consumption-section {
+    border-color: #45a045;
+    border-width: 1px 0 0;  /* top & bottom: 1px, left & right: 0 */
+    border-style: solid;
+    padding: 10px;
+}
+
+.config-feed-section {
+    border-color: #711894;
+    border-width: 1px 0 0;  /* top & bottom: 1px, left & right: 0 */
+    border-style: solid;
+    padding: 10px;
 }

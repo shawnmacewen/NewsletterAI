@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Listeners
     document.getElementById('generateBtn').addEventListener('click', generateIntroduction);
-    document.getElementById('content-tab').addEventListener('click', retrieveContent);
+    document.getElementById('content-tab').addEventListener('click', function () {
+        retrieveContent();
+        resetViewToggle();
+    });
+
     document.getElementById('listViewBtn').addEventListener('click', toggleListView);
     document.getElementById('tileViewBtn').addEventListener('click', toggleTileView);
     document.getElementById('newsletterText').addEventListener('input', updateCharCount);
@@ -94,6 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Functions
+    function resetViewToggle() {
+        const listViewBtn = document.getElementById('listViewBtn');
+        const tileViewBtn = document.getElementById('tileViewBtn');
+
+        listViewBtn.classList.add('active');
+        tileViewBtn.classList.remove('active');
+    }
+
+
+
     function updateSelectionCount() {
         const checkedBoxes = document.querySelectorAll('.article-checkbox:checked').length;
         const displayElement = document.getElementById('selectionCount');
@@ -101,12 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (checkedBoxes === 0) {
             displayElement.style.display = 'none'; // Hide the display if no checkboxes are selected
         } else {
-            const displayText = checkedBoxes === 1 ? 'Selection' : 'Selections';
+            const displayText = checkedBoxes === 1 ? 'Selected' : 'Selected';
             displayElement.textContent = `${checkedBoxes} ${displayText}`;
             displayElement.style.display = 'inline'; // Show the display if at least one checkbox is selected
         }
     }
 
+    updateSelectionCount()
 
 
 
@@ -116,10 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedTone = document.getElementById('toneSelect').value;
         const keywords = document.getElementById('keywordsInput').value;
         const eventValue = document.getElementById('eventSelect').value;
+        const selectedMood = document.getElementById('selectedMood').value;
+
 
         // Construct keyword and event phrases
         let keywordPhrase = keywords.trim() !== "" ? `Suggested Themes: ${keywords}.` : "";
         const eventPhrase = eventValue.trim() !== "" ? `Related Event: ${eventValue}.` : "";
+        const moodPhrase = selectedMood.trim() !== "" ? `Mood: ${selectedMood}.` : "";
+
+
 
         // Construct article references
         const selectedArticleCheckboxes = document.querySelectorAll('.article-checkbox:checked');
@@ -133,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Construct context and message
         const context = `${document.getElementById('contextInput').value}${selectedTone}`;
-        let message = `${document.getElementById('messageInput').value}${keywordPhrase}${eventPhrase}`;
+        let message = `${document.getElementById('messageInput').value}${keywordPhrase}${eventPhrase}${moodPhrase}`;
+
 
         // Add references if checkbox is checked
         const includeReference = document.getElementById('includeContentReference').checked;
@@ -299,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Create the ion-icon element
                 const icon = document.createElement('ion-icon');
-                icon.setAttribute('name', 'star');
+                icon.setAttribute('name', 'ribbon');
                 icon.style.fontSize = '26px';
                 label.appendChild(icon);  // Append the icon to the label
 
@@ -320,12 +341,84 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function highlightClientConsumptionRecommendations() {
+        const tagsInput = document.getElementById("clientConsumptionTagsInput").value;
+        const tags = tagsInput.split(',').map(tag => tag.trim().toLowerCase());
+
+        if (tags.length === 0 || !tagsInput.trim()) {
+            return;
+        }
+
+
+        // Display parsed tags as labels
+        const tagsDisplayContainer = document.getElementById('tagsDisplayContainer');
+        tagsDisplayContainer.innerHTML = ''; // Clear previous tags
+
+        tags.forEach(tag => {
+            if (tag) {
+                const tagLabel = document.createElement('span');
+                tagLabel.className = 'badge bg-secondary me-2'; // Using Bootstrap badge for styling
+                tagLabel.textContent = tag;
+                tagsDisplayContainer.appendChild(tagLabel);
+            }
+        });
+
+
+
+        const articles = document.querySelectorAll('.content-item, .custom-card');
+
+        articles.forEach(article => {
+            const recommendationContainer = article.querySelector('.client-consumption-recommendation-container');
+
+            if (recommendationContainer) {
+                const existingLabel = recommendationContainer.querySelector('.client-consumption-recommendation');
+                if (existingLabel) {
+                    existingLabel.remove();
+                }
+            }
+
+            const title = article.querySelector('h5').textContent.toLowerCase();
+            const summary = article.querySelector('p').textContent.toLowerCase();
+
+            let matchFound = false;
+
+            for (let tag of tags) {
+                if (title.includes(tag) || summary.includes(tag)) {
+                    matchFound = true;
+                }
+            }
+
+            if (matchFound && recommendationContainer) {
+                const label = document.createElement('span');
+                label.className = 'client-consumption-recommendation';
+
+                const icon = document.createElement('ion-icon');
+                icon.setAttribute('name', 'ribbon');  // You can change the icon if needed
+                icon.style.fontSize = '26px';
+                label.appendChild(icon);
+
+                label.setAttribute('data-bs-toggle', 'tooltip');
+                label.setAttribute('data-bs-placement', 'top');
+                label.setAttribute('title', 'This recommendation uses the AdvisorStream "Client Consumption Model" of each individual contact, rolled up, to suggest content similiar to what your contacts are reading most.');
+
+                recommendationContainer.appendChild(label);
+                new bootstrap.Tooltip(label);
+                label.style.display = 'block';
+            }
+        });
+    }
+
+    document.getElementById('clientConsumptionTagsInput').addEventListener('input', highlightClientConsumptionRecommendations);
+
+
+
 
     function toggleListView() {
         if (retrievedContent) {
             displayContent(retrievedContent, 'list');
             restoreSelections(); // Restore checkbox states and apply card-checked class
             highlightRecommendedArticles();
+            highlightClientConsumptionRecommendations()
         }
         this.classList.add('active');
         document.getElementById('tileViewBtn').classList.remove('active');
@@ -336,6 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayContent(retrievedContent, 'tile');
             restoreSelections(); // Restore checkbox states and apply card-checked class
             highlightRecommendedArticles();
+            highlightClientConsumptionRecommendations()
         }
         this.classList.add('active');
         document.getElementById('listViewBtn').classList.remove('active');
@@ -363,6 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contentDisplayElement.innerHTML = contentHtml;
         }
         highlightRecommendedArticles();
+        highlightClientConsumptionRecommendations()
     }
 
     function createTileView(data) {
@@ -382,6 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="d-flex">
                 <a href="${item.page_url}" target="_blank"><ion-icon name="reader-outline" style="font-size: 26px;"></ion-icon></a>
                 <span class="keyword-recommendation-container ml-2"></span>
+                <span class="client-consumption-recommendation-container"></span>
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -435,6 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Second row for the checkbox -->
             <div class="col-12 d-flex align-items-center">
             <span class="keyword-recommendation-container ml-2"></span>
+            <span class="client-consumption-recommendation-container"></span>
 
             </div>
         </div>
