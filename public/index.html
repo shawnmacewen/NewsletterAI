@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter GPT</title>
+    <title>NewsletterAI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
         </div>
     </nav>
     <div class="background-image-graphic">
-        <div class="container mt-5 ">
+        <div class="container mt-4">
             <div class="row align-items-start">
                 <!-- Left Section: Context and Message Inputs -->
                 <!-- Header -->
@@ -73,386 +73,531 @@
                 </div>
 
 
+                <div class="row">
 
+                    <div class="col-md-6 card shadow rounded p-3 me-3 card-left">
+                        <!-- Editor section-->
+                        <div class="editor-section">
+                            <!-- Nav tabs -->
 
-                <div class="col-md-6 card shadow rounded p-3 me-3 card-left">
-                    <!-- Editor section-->
-                    <div class="editor-section">
-                        <!-- Nav tabs -->
-
-                        <ul class="nav nav-pills" id="editorTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="create-tab" data-bs-toggle="tab" href="#create"
-                                    role="tab" aria-controls="create" aria-selected="true">
-                                    <ion-icon name="add-circle-outline"
-                                        style="font-size: 24px; vertical-align: middle;"></ion-icon> Style
-                                </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="content-tab" data-bs-toggle="tab" href="#content" role="tab"
-                                    aria-controls="content" aria-selected="false">
-                                    <ion-icon name="wifi" style="font-size: 24px; vertical-align: middle;"></ion-icon>
-                                    Content
-                                </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="edit-tab" data-bs-toggle="tab" href="#edit" role="tab"
-                                    aria-controls="edit" aria-selected="false">
-                                    <ion-icon name="flash-outline"
-                                        style="font-size: 24px; vertical-align: middle;"></ion-icon>
-                                    Actions
-                                </a>
-                            </li>
-                            <li class="nav-item ms-auto" role="presentation">
-                                <a class="nav-link" id="advanced-tab" data-bs-toggle="tab" href="#advanced" role="tab"
-                                    aria-controls="advanced" aria-selected="false">
-                                    <ion-icon name="settings-outline"
-                                        style="font-size: 24px; vertical-align: middle;"></ion-icon> Config
-                                </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="help-tab" data-bs-toggle="tab" href="#help" role="tab"
-                                    aria-controls="help" aria-selected="false">
-                                    <ion-icon name="information-circle-outline"
-                                        style="font-size: 24px; vertical-align: middle;"></ion-icon>
-                                </a>
-                            </li>
-                        </ul>
-                        <hr style="color:green;margin-bottom: -10px;margin-top: 10px;">
-                        <!-- Tab panes -->
-                        <div class="tab-content mt-3" id="editorTabsContent">
-                            <div class="tab-pane fade show active" id="create" role="tabpanel"
-                                aria-labelledby="create-tab">
-                                <!-- Your current input fields go here -->
-                                <div>
-                                    <label for="toneSelect" class="form-label mt-3 input-headers">
-                                        <span class="step-indicator">1</span>Tone</label>
-                                    <select class="form-select tone-dropdown" id="toneSelect">
-                                        <option value="casual">Casual</option>
-                                        <option value="professional">Professional</option>
-                                        <option value="heartfelt">Heartfelt</option>
-                                        <option value="direct">Direct</option>
-                                        <option value="knowledgeable">Knowledgeable</option>
-                                        <option value="enthusiastic">Enthusiastic</option>
-                                        <option value="optimistic">Optimistic</option>
-                                        <option value="persuasive">Persuasive</option>
-                                        <option value="technical">Technical</option>
-                                        <option value="assertive">Assertive</option>
-                                        <option value="witty">Witty</option>
-                                        <option value="empathetic">Empathetic</option>
-                                        <option value="elegant">Elegant</option>
-                                        <option value="sarcastic">Sarcastic</option>
-                                        <option value="ceremonial">Ceremonial</option>
-                                        <option value="country">Country</option>
-                                        <option value="underwater">Underwater</option>
-                                        <option value="childish">Childish</option>
-                                        <option value="cat">Cat</option>
-                                    </select>
-
-                                    <span class="input-help-text">
-                                    </span>
-                                </div>
-
-                                <div>
-                                    <div class="form-group">
-
-
-                                        <label for="selectedMood" class="form-label mt-3 input-headers"><span
-                                                class="step-indicator">2</span>Mood</label>
-
-
-                                        <select class="form-select mood-dropdown" id="selectedMood">
-                                            <option value="Formal">Formal</option>
-                                            <option value="Reassuring">Reassuring</option>
-                                            <option value="Joyful">Joyful</option>
-                                            <option value="Reflective">Reflective</option>
-                                            <option value="Inspirational">Inspirational</option>
-                                            <option value="Celebratory">Celebratory</option>
-                                            <option value="Serene">Serene</option>
-                                            <option value="Exciting">Exciting</option>
-                                            <option value="Melancholic">Melancholic</option>
-                                            <option value="Humorous">Humorous</option>
-                                            <option value="Dramatic">Dramatic</option>
-                                            <option value="Analytical">Analytical</option>
-                                            <option value="Cautious">Cautious</option>
-                                            <option value="Determined">Determined</option>
-                                            <option value="Empowering">Empowering</option>
-                                            <option value="Inquisitive">Inquisitive</option>
-                                            <option value="Resolute">Resolute</option>
-                                            <option value="Visionary">Visionary</option>
-                                            <option value="Mystical">Mystical</option>
-                                            <option value="Authoritative">Authoritative</option>
+                            <ul class="nav nav-pills" id="editorTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="create-tab" data-bs-toggle="tab" href="#create"
+                                        role="tab" aria-controls="create" aria-selected="true">
+                                        <ion-icon name="add-circle-outline"
+                                            style="font-size: 24px; vertical-align: middle;"></ion-icon> Style
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="content-tab" data-bs-toggle="tab" href="#content" role="tab"
+                                        aria-controls="content" aria-selected="false">
+                                        <ion-icon name="wifi"
+                                            style="font-size: 24px; vertical-align: middle;"></ion-icon>
+                                        Content
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="edit-tab" data-bs-toggle="tab" href="#edit" role="tab"
+                                        aria-controls="edit" aria-selected="false">
+                                        <ion-icon name="flash-outline"
+                                            style="font-size: 24px; vertical-align: middle;"></ion-icon>
+                                        Actions
+                                    </a>
+                                </li>
+                                <li class="nav-item ms-auto" role="presentation">
+                                    <a class="nav-link" id="advanced-tab" data-bs-toggle="tab" href="#advanced"
+                                        role="tab" aria-controls="advanced" aria-selected="false">
+                                        <ion-icon name="settings-outline"
+                                            style="font-size: 24px; vertical-align: middle;"></ion-icon> Config
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="help-tab" data-bs-toggle="tab" href="#help" role="tab"
+                                        aria-controls="help" aria-selected="false">
+                                        <ion-icon name="information-circle-outline"
+                                            style="font-size: 24px; vertical-align: middle;"></ion-icon>
+                                    </a>
+                                </li>
+                            </ul>
+                            <hr style="color:green;margin-bottom: -10px;margin-top: 10px;">
+                            <!-- Tab panes -->
+                            <div class="tab-content mt-3" id="editorTabsContent">
+                                <div class="tab-pane fade show active" id="create" role="tabpanel"
+                                    aria-labelledby="create-tab">
+                                    <!-- Your current input fields go here -->
+                                    <div>
+                                        <label for="toneSelect" class="form-label mt-3 input-headers">
+                                            <span class="step-indicator">1</span>Tone</label>
+                                        <select class="form-select tone-dropdown" id="toneSelect">
+                                            <option value="casual">Casual</option>
+                                            <option value="professional">Professional</option>
+                                            <option value="heartfelt">Heartfelt</option>
+                                            <option value="funny">Funny</option>
+                                            <option value="enthusiastic">Enthusiastic</option>
+                                            <option value="optimistic">Optimistic</option>
+                                            <option value="persuasive">Persuasive</option>
+                                            <option value="technical">Technical</option>
+                                            <option value="witty">Witty</option>
+                                            <option value="empathetic">Empathetic</option>
+                                            <option value="elegant">Elegant</option>
+                                            <option value="sarcastic">Sarcastic</option>
+                                            <option value="country">Country</option>
+                                            <option value="underwater">Underwater</option>
+                                            <option value="childish">Childish</option>
+                                            <option value="cat">Cat</option>
                                         </select>
 
-                                    </div>
-                                    <span class="input-help-text">
-                                    </span>
-
-                                </div>
-
-
-
-
-                                <div class="d-flex optional-label">
-                                    <label for="keywordsInput" class="form-label mt-3 input-headers">
-                                        <span class="step-indicator">3</span>Keywords
-                                    </label>
-                                    <span class="input-help-text">*Optional</span>
-                                </div>
-                                <input type="text" class="form-control" id="keywordsInput"
-                                    placeholder="Enter keywords separated by a comma" maxlength="100"
-                                    value="insurance, taxes, tennis, football">
-                                <span class="input-help-text"></span>
-
-
-
-
-
-
-                                <div class="d-flex optional-label">
-                                    <label for="eventSelect" class="form-label mt-3 input-headers">
-                                        <span class="step-indicator">4</span>Event
-                                    </label>
-                                    <span class="input-help-text">*Optional</span>
-                                </div>
-                                <select class="form-select" id="eventSelect">
-                                    <option value="">No Event Selected</option>
-                                    <option value="Christmas">Christmas</option>
-                                    <option value="Halloween">Halloween</option>
-                                    <option value="Financial Literacy Week">Financial Literacy Week</option>
-                                    <option value="Daylight Savings">Daylight Savings</option>
-                                    <option value="Office Closed Notice">Office Closed Notice</option>
-                                    <!-- ... other events ... -->
-                                </select>
-
-                            </div>
-                            <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
-                                <!-- Content for the Edit tab goes here -->
-                                <!-- Modification buttons -->
-                                <div class="mt-3">
-                                    <button class="btn btn-outline-secondary me-2 disabled" id="shorterBtn">Book a
-                                        Meeting</button>
-                                    <button class="btn btn-outline-secondary disabled" id="longerBtn">Discuss
-                                        Plan</button>
-                                    <button class="btn btn-outline-secondary disabled" id="longerBtn">Refferal</button>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade " id="content" role="tabpanel" aria-labelledby="content-tab">
-                                <!-- Content for the Content tab goes here -->
-                                <div class="view-menu" style="padding-bottom: 12px;">
-                                    <span id="selectionCount">0 Selected</span></span>
-
-
-                                    <span class="ms-auto view-menu">
-                                        <button id="clearCheckboxesBtn" class="btn"><span
-                                                style="font-size: 12px; color: brown;">Clear</span>
-                                        </button>
-                                        <span style="margin-right: 10px;"></span>
-                                        <button id="listViewBtn" class="btn btn-primary view-btn active ">
-                                            <ion-icon name="list-outline"></ion-icon>
-                                        </button>
-                                        <span style="margin-right: 3px;"></span>
-                                        <button id="tileViewBtn" class="btn btn-primary view-btn ">
-                                            <ion-icon name="grid-outline"></ion-icon>
-                                        </button>
-                                    </span>
-                                </div>
-                                <div class="row">
-                                    <div class="content-list scrollbar" id=style-7>
-                                        <div id="contentDisplay" class="mt-3 force-overflow"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-                                <!-- Content for the Advanced tab goes here -->
-
-
-
-                                <div class="config-prompt-section">
-                                    <div class="mb-3">
-                                        <label for="contextInput" class="form-label">Context</label>
-                                        <textarea class="form-control" id="contextInput" placeholder="Enter context"
-                                            rows="6"> </textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="messageInput" class="form-label">Message</label>
-                                        <textarea class="form-control" id="messageInput" placeholder="Enter message"
-                                            rows="4"></textarea>
+                                        <span class="input-help-text">
+                                        </span>
                                     </div>
 
-                                </div>
-
-
-                                <div class="config-consumption-section">
-
-                                    <label for="clientConsumptionTagsInput" class="form-label ">Client Consumption
-                                        Model Tags</label>
-                                    <div id="tagsDisplayContainer" class="mb-1"></div>
-                                    <input type="text" class="form-control" id="clientConsumptionTagsInput"
-                                        placeholder="Enter topic tags separated by a comma"
-                                        value="insurance, travel, business owner, economy">
-
-                                </div>
-
-
-
-
-
-                                <div class="config-feed-section">
-                                    <div class="form-group">
-                                        <label for="feedUrlInput">AdvisorStream Feed URL:</label>
-                                        <input type="url" class="form-control" id="feedUrlInput"
-                                            placeholder="Enter feed URL"
-                                            value="https://my.advisorstream.com/communication/advisorwebsite/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6MjAwMTZ9.BjNMoEKzNbr8OR2_-S3boXpRofO-myHeO6VyY3hzEuw/rss/">
-                                    </div>
                                     <div>
-                                        <button hidden id="retrieveContentBtn" class="btn btn-primary mt-3">Retreive
-                                            Content</button><span style="padding-left: 16px;"><label>
-                                                <label hidden class="switch">
-                                                    <input type="checkbox" id="includeContentReference">
-                                                    <span class="slider"></span>
-                                                </label>
-                                            </label></span>
+                                        <div class="form-group">
+
+
+                                            <label for="selectedMood" class="form-label mt-3 input-headers"><span
+                                                    class="step-indicator">2</span>Mood</label>
+
+
+                                            <select class="form-select mood-dropdown" id="selectedMood">
+                                                <option value="Formal">Formal</option>
+                                                <option value="Reassuring">Reassuring</option>
+                                                <option value="Joyful">Joyful</option>
+                                                <option value="Inspirational">Inspirational</option>
+                                                <option value="Celebratory">Celebratory</option>
+                                                <option value="Reflective">Reflective</option>
+                                                <option value="Serene">Serene</option>
+                                                <option value="Exciting">Exciting</option>
+                                                <option value="Humorous">Humorous</option>
+                                                <option value="Dramatic">Dramatic</option>
+                                                <option value="Analytical">Analytical</option>
+                                                <option value="Cautious">Cautious</option>
+                                                <option value="Determined">Determined</option>
+                                                <option value="Empowering">Empowering</option>
+
+                                            </select>
+
+                                        </div>
+                                        <span class="input-help-text">
+                                        </span>
+
+                                    </div>
+
+
+
+
+                                    <div class="d-flex optional-label">
+                                        <label for="keywordsInput" class="form-label mt-3 input-headers">
+                                            <span class="step-indicator">3</span>Keywords
+                                        </label>
+                                        <span class="input-help-text">*Optional</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="keywordsInput"
+                                        placeholder="Enter keywords separated by a comma" maxlength="100"
+                                        value="insurance, taxes, tennis, football">
+                                    <span class="input-help-text"></span>
+
+
+
+
+
+
+                                    <div class="d-flex optional-label">
+                                        <label for="eventSelect" class="form-label mt-3 input-headers">
+                                            <span class="step-indicator">4</span>Event
+                                        </label>
+                                        <span class="input-help-text">*Optional</span>
+                                    </div>
+                                    <select class="form-select" id="eventSelect">
+                                        <option value="">No Event Selected</option>
+                                        <option value="Christmas">Christmas</option>
+                                        <option value="Halloween">Halloween</option>
+                                        <option value="Financial Literacy Week">Financial Literacy Week</option>
+                                        <option value="Daylight Savings">Daylight Savings</option>
+                                        <option value="Office Closed Notice">Office Closed Notice</option>
+                                        <!-- ... other events ... -->
+                                    </select>
+
+                                </div>
+                                <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                                    <!-- Content for the Edit tab goes here -->
+                                    <!-- Modification buttons -->
+
+                                    <div class="row mt-3">
+                                        <!-- Label -->
+                                        <div class="col-12 text-left mt-3 mb-1">
+                                            <div>Include Call to Action:</div>
+                                        </div>
+
+                                        <!-- Button Group -->
+                                        <div class="col-12 d-flex">
+                                            <div class="btn-group" role="group"
+                                                aria-label="Basic checkbox toggle button group">
+                                                <input type="checkbox" class="btn-check" id="bookMeeting"
+                                                    autocomplete="off">
+                                                <label class="btn btn-outline-primary" for="bookMeeting">Book
+                                                    Meeting <ion-icon name="calendar-number-outline"
+                                                        style="font-size: 20px; vertical-align: middle;"></ion-icon></label>
+
+                                                <input type="checkbox" class="btn-check" id="discussPlan"
+                                                    autocomplete="off">
+                                                <label class="btn btn-outline-primary" for="discussPlan">Discuss
+                                                    Plan <ion-icon name="stats-chart-outline"
+                                                        style="font-size: 20px; vertical-align: middle;"></label>
+
+                                                <input type="checkbox" class="btn-check" id="referral"
+                                                    autocomplete="off">
+                                                <label class="btn btn-outline-primary" for="referral">Ask for
+                                                    Referral <ion-icon name="magnet-outline"
+                                                        style="font-size: 20px; vertical-align: middle;"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="tab-pane fade " id="content" role="tabpanel" aria-labelledby="content-tab">
+                                    <!-- Content for the Content tab goes here -->
+                                    <div class="view-menu" style="padding-bottom: 12px;">
+                                        <span id="selectionCount">0 Selected</span></span>
+
+
+                                        <span class="ms-auto view-menu">
+                                            <button id="clearCheckboxesBtn" class="btn"><span
+                                                    style="font-size: 12px; color: brown;">Clear</span>
+                                            </button>
+                                            <span style="margin-right: 10px;"></span>
+                                            <button id="listViewBtn" class="btn btn-primary view-btn active ">
+                                                <ion-icon name="list-outline"></ion-icon>
+                                            </button>
+                                            <span style="margin-right: 3px;"></span>
+                                            <button id="tileViewBtn" class="btn btn-primary view-btn ">
+                                                <ion-icon name="grid-outline"></ion-icon>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="content-list scrollbar" id=style-7>
+                                            <div id="contentDisplay" class="mt-3 force-overflow"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="help" role="tabpanel" aria-labelledby="help-tab"
-                                style="height: 550px; overflow-y: auto;">
-                                <!-- Content for the help tab goes here -->
+                                <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
+                                    <!-- Content for the Advanced tab goes here -->
 
 
-                                <div class="">
-                                    <h5>Tone Descriptions</h5>
-                                    <ul style="font-size: 10px">
-                                        <!-- Tones -->
-                                        <li><strong>Casual</strong>: Informal and relaxed, often used in friendly or
-                                            familiar settings.</li>
-                                        <li><strong>Professional</strong>: Formal and reserved, suitable for business or
-                                            official communications.</li>
-                                        <li><strong>Heartfelt</strong>: Genuine and sincere, often used to convey deep
-                                            emotions or sentiments.</li>
-                                        <li><strong>Direct</strong>: Straightforward and to the point, used when clarity
-                                            and conciseness are paramount.</li>
-                                        <li><strong>Knowledgeable</strong>: Informed and insightful, used when sharing
-                                            expertise or specialized information.</li>
-                                        <li><strong>Enthusiastic</strong>: Energetic and passionate, used to convey
-                                            excitement or strong interest.</li>
-                                        <li><strong>Optimistic</strong>: Hopeful and positive, used to convey a bright
-                                            outlook or good expectations.</li>
-                                        <li><strong>Persuasive</strong>: Convincing and compelling, used when trying to
-                                            persuade or influence an audience.</li>
-                                        <li><strong>Technical</strong>: Detailed and precise, often used when discussing
-                                            specialized topics or processes.</li>
-                                        <li><strong>Assertive</strong>: Confident and self-assured, used when expressing
-                                            oneself strongly.</li>
-                                        <li><strong>Witty</strong>: Clever and quick, used to convey humor with
-                                            intelligence.</li>
-                                        <li><strong>Empathetic</strong>: Understanding and compassionate, used when
-                                            addressing sensitive topics or showing support.</li>
-                                        <li><strong>Elegant</strong>: Sophisticated and graceful, often used in upscale
-                                            or refined contexts.</li>
-                                        <li><strong>Sarcastic</strong>: Ironic and mocking, used to convey humor or mock
-                                            something indirectly.</li>
-                                        <li><strong>Ceremonial</strong>: Ritualistic and traditional, suitable for
-                                            ceremonies or formal events.</li>
-                                        <li><strong>Country</strong>: Rustic and homely, evoking rural or countryside
-                                            vibes.</li>
-                                        <li><strong>Underwater</strong>: Mystical and serene, used to evoke feelings of
-                                            being submerged or in a different realm.</li>
-                                        <li><strong>Childish</strong>: Playful and naive, often used in light-hearted or
-                                            whimsical contexts.</li>
-                                        <li><strong>Cat</strong>: Whimsical and curious, often used in playful or quirky
-                                            contexts.</li>
-                                    </ul>
+
+                                    <div class="config-prompt-section">
+                                        <div class="mb-3">
+                                            <label for="contextInput" class="form-label">Context</label>
+                                            <textarea class="form-control" id="contextInput" placeholder="Enter context"
+                                                rows="6"> </textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="messageInput" class="form-label">Message</label>
+                                            <textarea class="form-control" id="messageInput" placeholder="Enter message"
+                                                rows="4"></textarea>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="config-consumption-section">
+
+                                        <label for="clientConsumptionTagsInput" class="form-label ">Client Consumption
+                                            Model Tags</label>
+                                        <div id="tagsDisplayContainer" class="mb-1"></div>
+                                        <input type="text" class="form-control" id="clientConsumptionTagsInput"
+                                            placeholder="Enter topic tags separated by a comma"
+                                            value="insurance, travel, business owner, economy">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="config-feed-section">
+                                        <div class="form-group">
+                                            <label for="feedUrlInput">AdvisorStream Feed URL:</label>
+                                            <input type="url" class="form-control" id="feedUrlInput"
+                                                placeholder="Enter feed URL"
+                                                value="https://my.advisorstream.com/communication/advisorwebsite/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6MjAwMTZ9.BjNMoEKzNbr8OR2_-S3boXpRofO-myHeO6VyY3hzEuw/rss/">
+                                        </div>
+                                        <div>
+                                            <button hidden id="retrieveContentBtn" class="btn btn-primary mt-3">Retreive
+                                                Content</button><span style="padding-left: 16px;"><label>
+                                                    <label hidden class="switch">
+                                                        <input type="checkbox" id="includeContentReference">
+                                                        <span class="slider"></span>
+                                                    </label>
+                                                </label></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="help" role="tabpanel" aria-labelledby="help-tab"
+                                    style="height: 550px; overflow-y: auto;">
+                                    <!-- Content for the help tab goes here -->
+
+
+                                    <div class="">
+                                        <h5>Tone Descriptions</h5>
+                                        <ul style="font-size: 10px">
+                                            <!-- Tones -->
+                                            <li><strong>Casual</strong>: Informal and relaxed, often used in friendly or
+                                                familiar settings.</li>
+                                            <li><strong>Professional</strong>: Formal and reserved, suitable for
+                                                business or
+                                                official communications.</li>
+                                            <li><strong>Heartfelt</strong>: Genuine and sincere, often used to convey
+                                                deep
+                                                emotions or sentiments.</li>
+                                            <li><strong>Direct</strong>: Straightforward and to the point, used when
+                                                clarity
+                                                and conciseness are paramount.</li>
+                                            <li><strong>Knowledgeable</strong>: Informed and insightful, used when
+                                                sharing
+                                                expertise or specialized information.</li>
+                                            <li><strong>Enthusiastic</strong>: Energetic and passionate, used to convey
+                                                excitement or strong interest.</li>
+                                            <li><strong>Optimistic</strong>: Hopeful and positive, used to convey a
+                                                bright
+                                                outlook or good expectations.</li>
+                                            <li><strong>Persuasive</strong>: Convincing and compelling, used when trying
+                                                to
+                                                persuade or influence an audience.</li>
+                                            <li><strong>Technical</strong>: Detailed and precise, often used when
+                                                discussing
+                                                specialized topics or processes.</li>
+                                            <li><strong>Assertive</strong>: Confident and self-assured, used when
+                                                expressing
+                                                oneself strongly.</li>
+                                            <li><strong>Witty</strong>: Clever and quick, used to convey humor with
+                                                intelligence.</li>
+                                            <li><strong>Empathetic</strong>: Understanding and compassionate, used when
+                                                addressing sensitive topics or showing support.</li>
+                                            <li><strong>Elegant</strong>: Sophisticated and graceful, often used in
+                                                upscale
+                                                or refined contexts.</li>
+                                            <li><strong>Sarcastic</strong>: Ironic and mocking, used to convey humor or
+                                                mock
+                                                something indirectly.</li>
+                                            <li><strong>Ceremonial</strong>: Ritualistic and traditional, suitable for
+                                                ceremonies or formal events.</li>
+                                            <li><strong>Country</strong>: Rustic and homely, evoking rural or
+                                                countryside
+                                                vibes.</li>
+                                            <li><strong>Underwater</strong>: Mystical and serene, used to evoke feelings
+                                                of
+                                                being submerged or in a different realm.</li>
+                                            <li><strong>Childish</strong>: Playful and naive, often used in
+                                                light-hearted or
+                                                whimsical contexts.</li>
+                                            <li><strong>Cat</strong>: Whimsical and curious, often used in playful or
+                                                quirky
+                                                contexts.</li>
+                                        </ul>
+
+                                    </div>
+
+
+                                    <div class="">
+                                        <h5>Mood Descriptions</h5>
+
+                                        <ul style="font-size: 10px">
+                                            <!-- Original Moods -->
+                                            <li><strong>Inspirational</strong>: Evokes motivation and encouragement,
+                                                often
+                                                used to uplift and inspire the audience.</li>
+                                            <li><strong>Celebratory</strong>: Conveys joy and festivity, often used
+                                                during
+                                                moments of achievements or special occasions.</li>
+                                            <li><strong>Reflective</strong>: Encourages introspection and contemplation,
+                                                often used when looking back or pondering.</li>
+                                            <li><strong>Exciting</strong>: Evokes enthusiasm and eagerness, often used
+                                                to
+                                                introduce something new or thrilling.</li>
+                                            <li><strong>Relaxed</strong>: Calm and laid-back, often used in casual or
+                                                comforting contexts.</li>
+                                            <li><strong>Humorous</strong>: Light-hearted and funny, often used to
+                                                entertain
+                                                or add a touch of levity.</li>
+                                            <li><strong>Urgent</strong>: Conveys a sense of immediacy, often used to
+                                                prompt
+                                                quick action or attention.</li>
+                                            <li><strong>Melancholic</strong>: Somber or reflective in a sorrowful way,
+                                                often
+                                                used in poignant or nostalgic contexts.</li>
+                                            <li><strong>Optimistic</strong>: Hopeful and positive, often used to convey
+                                                a
+                                                bright outlook or good expectations.</li>
+                                            <li><strong>Pensive</strong>: Deeply thoughtful, often used when
+                                                contemplating
+                                                or musing over something.</li>
+
+                                            <!-- New Professional Moods -->
+                                            <li><strong>Analytical</strong>: A mood that conveys a logical and
+                                                methodical
+                                                approach, often used when presenting data or detailed insights.</li>
+                                            <li><strong>Authoritative</strong>: A tone that exudes confidence and
+                                                expertise,
+                                                often used when making definitive statements or leading a team.</li>
+                                            <li><strong>Cautious</strong>: A reserved and careful mood, often used when
+                                                discussing potential risks or uncertainties.</li>
+                                            <li><strong>Determined</strong>: A mood that conveys a strong will and
+                                                purpose,
+                                                often used when setting goals or pushing through challenges.</li>
+                                            <li><strong>Empowering</strong>: A mood that uplifts and encourages, often
+                                                used
+                                                when motivating a team or individual to take action.</li>
+                                            <li><strong>Formal</strong>: A reserved and traditional mood, often used in
+                                                official communications or when addressing a formal audience.</li>
+                                            <li><strong>Inquisitive</strong>: A mood that conveys curiosity and a desire
+                                                to
+                                                learn more, often used when asking questions or exploring new topics.
+                                            </li>
+                                            <li><strong>Reassuring</strong>: A comforting and supportive mood, often
+                                                used
+                                                when addressing concerns or providing support.</li>
+                                            <li><strong>Resolute</strong>: A mood that conveys unwavering determination,
+                                                often used when making a firm decision or standing by a particular
+                                                stance.
+                                            </li>
+                                            <li><strong>Visionary</strong>: A forward-looking and innovative mood, often
+                                                used when discussing future plans or big ideas.</li>
+                                        </ul>
+
+
+
+
+                                    </div>
+
+                                    <div class="">
+                                        <ul id="messagesList">
+                                            <!-- Messages will be populated here -->
+                                        </ul>
+
+                                    </div>>
 
                                 </div>
 
 
-                                <div class="">
-                                    <h5>Mood Descriptions</h5>
-
-                                    <ul style="font-size: 10px">
-                                        <!-- Original Moods -->
-                                        <li><strong>Inspirational</strong>: Evokes motivation and encouragement, often
-                                            used to uplift and inspire the audience.</li>
-                                        <li><strong>Celebratory</strong>: Conveys joy and festivity, often used during
-                                            moments of achievements or special occasions.</li>
-                                        <li><strong>Reflective</strong>: Encourages introspection and contemplation,
-                                            often used when looking back or pondering.</li>
-                                        <li><strong>Exciting</strong>: Evokes enthusiasm and eagerness, often used to
-                                            introduce something new or thrilling.</li>
-                                        <li><strong>Relaxed</strong>: Calm and laid-back, often used in casual or
-                                            comforting contexts.</li>
-                                        <li><strong>Humorous</strong>: Light-hearted and funny, often used to entertain
-                                            or add a touch of levity.</li>
-                                        <li><strong>Urgent</strong>: Conveys a sense of immediacy, often used to prompt
-                                            quick action or attention.</li>
-                                        <li><strong>Melancholic</strong>: Somber or reflective in a sorrowful way, often
-                                            used in poignant or nostalgic contexts.</li>
-                                        <li><strong>Optimistic</strong>: Hopeful and positive, often used to convey a
-                                            bright outlook or good expectations.</li>
-                                        <li><strong>Pensive</strong>: Deeply thoughtful, often used when contemplating
-                                            or musing over something.</li>
-
-                                        <!-- New Professional Moods -->
-                                        <li><strong>Analytical</strong>: A mood that conveys a logical and methodical
-                                            approach, often used when presenting data or detailed insights.</li>
-                                        <li><strong>Authoritative</strong>: A tone that exudes confidence and expertise,
-                                            often used when making definitive statements or leading a team.</li>
-                                        <li><strong>Cautious</strong>: A reserved and careful mood, often used when
-                                            discussing potential risks or uncertainties.</li>
-                                        <li><strong>Determined</strong>: A mood that conveys a strong will and purpose,
-                                            often used when setting goals or pushing through challenges.</li>
-                                        <li><strong>Empowering</strong>: A mood that uplifts and encourages, often used
-                                            when motivating a team or individual to take action.</li>
-                                        <li><strong>Formal</strong>: A reserved and traditional mood, often used in
-                                            official communications or when addressing a formal audience.</li>
-                                        <li><strong>Inquisitive</strong>: A mood that conveys curiosity and a desire to
-                                            learn more, often used when asking questions or exploring new topics.</li>
-                                        <li><strong>Reassuring</strong>: A comforting and supportive mood, often used
-                                            when addressing concerns or providing support.</li>
-                                        <li><strong>Resolute</strong>: A mood that conveys unwavering determination,
-                                            often used when making a firm decision or standing by a particular stance.
-                                        </li>
-                                        <li><strong>Visionary</strong>: A forward-looking and innovative mood, often
-                                            used when discussing future plans or big ideas.</li>
-                                    </ul>
 
 
 
 
+
+
+
+                            </div>
+                        </div>
+                        <br>
+
+
+                    </div>
+                    <!-- Right Section: Newsletter Introduction Writer -->
+                    <div class="col-md-5 card shadow rounded p-3 ms-3">
+
+
+                        <!-- Tab panes -->
+                        <!-- Introduction Field -->
+                        <div class="mb-3 card-right">
+                            <label for="contextInput" class="form-label"></label>
+                            <textarea class="form-control" id="newsletterText" rows="24"
+                                placeholder="Use the Generate AI button to create a newsletter intro"></textarea>
+                            <div class="text-end mt-2" id="charCount" style="font-size: 14px;">0 characters</div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+                <!-- Below tyhe main content area, save functions here -->
+                <div class="row">
+                    <div class="col-md-6  p-3 me-3 mt-2">
+
+                    </div>
+                    <div class="col-md-5 card shadow rounded p-3 ms-3 mt-2">
+                        <div id="saveTemplateSection">
+                            <div class="row">
+                                <div class="col">
+                                    <span id="saveStatus"></span>
                                 </div>
 
                             </div>
 
+                            <div class="row">
+
+                                <div class="col">
+                                    <input type="text" id="templateNameInput" placeholder="Enter template name">
+                                </div>
+                                <div class="col">
+                                    <button id="saveTemplateBtn" class="btn btn-primary">Save Intro</button>
+                                </div>
+                                <div class="col">
+                                    <button id="loadTemplateBtn" class="btn btn-primary">Load Intro</button>
+                                </div>
+
+
+                            </div>
+
+
+                            <div id="loadTemplateModal" class="modal" tabindex="-1">
+
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content modal-load-window">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Load Template</h5>
+                                            <button type="button" class="btn btn-danger close-btn">Close</button>
+
+                                        </div>
+
+                                        <div clas="modal-body modal-load-window-content">
+                                            <ul id="templateList" class="">
+                                                <!-- Templates will be populated here -->
+
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
 
 
 
 
 
+
+
+
+                            </div>
 
 
 
                         </div>
-                    </div>
-                    <br>
 
+                    </div>
 
                 </div>
-                <!-- Right Section: Newsletter Introduction Writer -->
-                <div class="col-md-5 card shadow rounded p-3 ms-3">
 
 
-                    <!-- Tab panes -->
-                    <!-- Introduction Field -->
-                    <div class="mb-3 card-right">
-                        <label for="contextInput" class="form-label"></label>
-                        <textarea class="form-control" id="newsletterText" rows="24"
-                            placeholder="Use the Generate AI button to create a newsletter intro"></textarea>
-                        <div class="text-end mt-2" id="charCount" style="font-size: 14px;">0 characters</div>
-                    </div>
-                </div>
+
+
+
+
             </div>
         </div>
     </div>
@@ -463,7 +608,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js"></script>
-    <script src="js/app.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 <footer>
     <br>

@@ -363,7 +363,6 @@ input:checked + .slider:before {
 .keyword-recommendation {
     font-size: 12px;
     color: #ee5622;
-    ;
     display: none; /* Keep this line */
 }
 
@@ -406,4 +405,61 @@ width: 160px;
     border-width: 1px 0 0;  /* top & bottom: 1px, left & right: 0 */
     border-style: solid;
     padding: 10px;
+}
+
+.templateListItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    border-bottom: 1px solid #dee2e6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.templateInfo {
+    flex-grow: 1; /* This ensures that templateInfo takes up all available space */
+    max-width: 66%;
+    text-align: left; /* This ensures the content inside is left-aligned */
+}
+
+.templateInfo h5 {
+    font-size: 12px;
+}
+
+/* Style for the button group */
+.templateListItem div {
+    margin-left: auto; /* This will push the button group to the right */
+}
+
+/* Style for the buttons inside the button group */
+.templateListItem button:not(:last-child) {
+    margin-right: 5px; /* This will add a 5px margin to the right of every button except the last one */
+}
+
+
+.close-btn {
+    /* Add any custom styles here */
+}
+
+.modal-load-window {
+    max-height: 500px; /* Adjust this value based on the height of your header and footer */
+    overflow-y: auto;
+}
+
+
+.modal-load-window-content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.modal-load-window-content::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.modal-load-window-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122,153,217)), color-stop(0.72, rgb(73,125,189)), color-stop(0.86, rgb(28,58,148)));
 }

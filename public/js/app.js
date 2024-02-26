@@ -1,4 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+import supabase from './supabase/supabaseClient.js';
+import { displayMessages, saveNewsletterTemplate, loadNewsletterTemplates, deleteNewsletterTemplate } from './supabase/db.js';
+
+
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+
+
 
     // Constants
     const CONTEXT_DEFAULT_TEXT = "You are a financial advisor who wants to provide a current and well written newsletter introduction message each week. You know that a well written newsletter intro message is maximum 1 to 2 paragraphs long, will have a general theme of financial wellness. Keep it simple and straight forward. Briefly mention having the need for a good financial plan and invite the client to book a meeting.";
@@ -135,9 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // Construct keyword and event phrases
-        let keywordPhrase = keywords.trim() !== "" ? `Suggested Themes: ${keywords}.` : "";
-        const eventPhrase = eventValue.trim() !== "" ? `Related Event: ${eventValue}.` : "";
-        const moodPhrase = selectedMood.trim() !== "" ? `Mood: ${selectedMood}.` : "";
+        let keywordPhrase = keywords.trim() !== "" ? ` Suggested Themes: ${keywords}.` : "";
+        const eventPhrase = eventValue.trim() !== "" ? ` Related Event: ${eventValue}.` : "";
+        const tonePhrase = selectedTone.trim() !== "" ? ` Tone: ${selectedTone}.` : "";
+        const moodPhrase = selectedMood.trim() !== "" ? ` Mood: ${selectedMood}.` : "";
 
 
 
@@ -152,8 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Construct context and message
-        const context = `${document.getElementById('contextInput').value}${selectedTone}`;
-        let message = `${document.getElementById('messageInput').value}${keywordPhrase}${eventPhrase}${moodPhrase}`;
+        const context = `${document.getElementById('contextInput').value}`;
+        let message = `${document.getElementById('messageInput').value}${keywordPhrase}${eventPhrase}${tonePhrase}${moodPhrase}`;
 
 
         // Add references if checkbox is checked
@@ -544,6 +554,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return html;
     };
+
+
+    // Supabase related function
+    // SUPASBASE
+
+
+    displayMessages()
+
+
+
+    document.getElementById('saveTemplateBtn').addEventListener('click', async () => {
+        const templateName = document.getElementById('templateNameInput').value;
+        const newsletterIntro = document.getElementById('newsletterText').value; // Assuming this is the ID of your newsletter intro input
+
+        const result = await saveNewsletterTemplate(templateName, newsletterIntro);
+        if (result) {
+            document.getElementById('saveStatus').textContent = "Saved successfully!";
+        } else {
+            document.getElementById('saveStatus').textContent = "Error saving template.";
+        }
+    });
+
+
+    console.log("Load template pre-loader")
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        document.getElementById('loadTemplateModal').style.display = "none";
+    });
+
+    console.log("modal loaded, function next")
+
+    // Assuming you have a button to open the modal
+    document.getElementById('loadTemplateBtn').addEventListener('click', async () => {
+        console.log("first check")
+        const templates = await loadNewsletterTemplates();
+        const templateList = document.getElementById('templateList');
+        console.log("check 2 pass")
+
+        // Clear existing list items
+        templateList.innerHTML = "";
+
+        // Populate list with fetched templates
+        templates.forEach(template => {
+            const listItem = document.createElement("li");
+            const buttonGroup = document.createElement("div"); // This div will contain the buttons
+
+
+
+            listItem.classList.add("templateListItem");
+
+
+            // Display template name and a small portion of the summary
+            const templateInfo = document.createElement("div");
+            templateInfo.classList.add("templateInfo");
+            templateInfo.innerHTML = `
+            <h5>ID: ${template.id}
+            Created: ${new Date(template.created_at).toLocaleDateString()}</h5>
+            <p><strong>${template.template_name}</strong></p>
+                              <h5>${template.newsletter_intro.substring(0, 200)}...</h5>`; // Displaying the first 50 characters. Adjust as needed.
+
+            listItem.appendChild(templateInfo);
+
+
+            const loadBtn = document.createElement("button");
+            loadBtn.textContent = "Load";
+            loadBtn.classList.add("btn", "btn-primary", "load-btn");  // Add the CSS class to the button
+            loadBtn.addEventListener('click', () => {
+                document.getElementById('newsletterText').value = template.newsletter_intro;
+                // Close the modal
+                document.getElementById('loadTemplateModal').style.display = "none";
+                updateCharCount();
+
+            });
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.classList.add("btn", "btn-danger");  // Bootstrap classes for a red button and margin-left
+
+            deleteBtn.addEventListener('click', async () => {
+                const isConfirmed = confirm("Are you sure you want to delete this template?");
+                if (isConfirmed) {
+                    // Call your Supabase function to delete the template
+                    const result = await deleteNewsletterTemplate(template.id);
+                    if (result) {
+                        alert("Template deleted successfully!");
+                        // Optionally, remove the listItem from the DOM
+                        listItem.remove();
+                    } else {
+                        alert("Error deleting template.");
+                    }
+                }
+            });
+
+            buttonGroup.appendChild(loadBtn);
+            buttonGroup.appendChild(deleteBtn);
+            listItem.appendChild(buttonGroup);
+            templateList.appendChild(listItem);
+
+
+        });
+
+        // Open the modal
+        document.getElementById('loadTemplateModal').style.display = "block";
+    });
+
 
 
 
