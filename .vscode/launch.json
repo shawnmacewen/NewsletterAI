@@ -12,16 +12,10 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "Open in Chrome",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/public"
-        }
-    ],
-    "compounds": [
-        {
-            "name": "Node + Chrome",
-            "configurations": ["Launch Node Server", "Launch Chrome against localhost"],
-            "preLaunchTask": "npm: script"
+            "webRoot": "${workspaceFolder}/public",
+            "userDataDir": false
         }
     ]
 }

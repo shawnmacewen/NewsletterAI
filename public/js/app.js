@@ -183,9 +183,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Show the spinner before sending the request
         document.getElementById('loadingSpinner').classList.remove('d-none');
 
-        // Constants for server details
-        // Use localhost for local testing, or set to Render URL for production
-        const SERVER_URL = "http://localhost:3000"; // Change to https://newsletterai.onrender.com for production
+        // Use current server origin (works for both local and Render.com)
+        const SERVER_URL = window.location.origin;
 
         try {
             // Send a POST request to the server
