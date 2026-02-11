@@ -1,8 +1,7 @@
 
-import supabase from './supabase/supabaseClient.js';
-import { displayMessages, saveNewsletterTemplate, loadNewsletterTemplates, deleteNewsletterTemplate } from './supabase/db.js';
-
-
+// Supabase disabled for now
+// import supabase from './supabase/supabaseClient.js';
+// import { displayMessages, saveNewsletterTemplate, loadNewsletterTemplates, deleteNewsletterTemplate } from './supabase/db.js';
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -185,7 +184,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('loadingSpinner').classList.remove('d-none');
 
         // Constants for server details
-        const SERVER_URL = "https://newsletterai.onrender.com";
+        // Use localhost for local testing, or set to Render URL for production
+        const SERVER_URL = "http://localhost:3000"; // Change to https://newsletterai.onrender.com for production
 
         try {
             // Send a POST request to the server
@@ -263,10 +263,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     async function retrieveContent() {
-        const FEED_URL = 'https://my.advisorstream.com/communication/advisorwebsite/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6MjAwMTZ9.BjNMoEKzNbr8OR2_-S3boXpRofO-myHeO6VyY3hzEuw';
+        const CONTENT_FILE = 'content.json';
 
         try {
-            const response = await fetch(FEED_URL);
+            const response = await fetch(CONTENT_FILE);
 
             if (!response.ok) {
                 throw new Error('Network response was not ok - SM5');
@@ -556,24 +556,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
 
-    // Supabase related function
-    // SUPASBASE
-
-
-    displayMessages()
+    // Supabase related function - DISABLED
+    // displayMessages()
 
 
 
+    // Supabase save disabled
     document.getElementById('saveTemplateBtn').addEventListener('click', async () => {
         const templateName = document.getElementById('templateNameInput').value;
-        const newsletterIntro = document.getElementById('newsletterText').value; // Assuming this is the ID of your newsletter intro input
+        const newsletterIntro = document.getElementById('newsletterText').value;
 
-        const result = await saveNewsletterTemplate(templateName, newsletterIntro);
-        if (result) {
-            document.getElementById('saveStatus').textContent = "Saved successfully!";
-        } else {
-            document.getElementById('saveStatus').textContent = "Error saving template.";
-        }
+        // Supabase disabled - commented out
+        // const result = await saveNewsletterTemplate(templateName, newsletterIntro);
+        // if (result) {
+        //     document.getElementById('saveStatus').textContent = "Saved successfully!";
+        // } else {
+        //     document.getElementById('saveStatus').textContent = "Error saving template.";
+        // }
+        document.getElementById('saveStatus').textContent = "Template save disabled (Supabase offline)";
     });
 
 
@@ -587,7 +587,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Assuming you have a button to open the modal
     document.getElementById('loadTemplateBtn').addEventListener('click', async () => {
         console.log("first check")
-        const templates = await loadNewsletterTemplates();
+        // Supabase disabled
+        // const templates = await loadNewsletterTemplates();
+        const templates = []; // Empty array - Supabase disabled
         const templateList = document.getElementById('templateList');
         console.log("check 2 pass")
 
@@ -634,15 +636,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             deleteBtn.addEventListener('click', async () => {
                 const isConfirmed = confirm("Are you sure you want to delete this template?");
                 if (isConfirmed) {
-                    // Call your Supabase function to delete the template
-                    const result = await deleteNewsletterTemplate(template.id);
-                    if (result) {
-                        alert("Template deleted successfully!");
-                        // Optionally, remove the listItem from the DOM
-                        listItem.remove();
-                    } else {
-                        alert("Error deleting template.");
-                    }
+                    // Supabase delete disabled
+                    // const result = await deleteNewsletterTemplate(template.id);
+                    alert("Delete disabled (Supabase offline)");
+                    // if (result) {
+                    //     alert("Template deleted successfully!");
+                    //     listItem.remove();
+                    // } else {
+                    //     alert("Error deleting template.");
+                    // }
                 }
             });
 
@@ -657,6 +659,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Open the modal
         document.getElementById('loadTemplateModal').style.display = "block";
     });
+
+
+
 
 
 
